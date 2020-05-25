@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Snack Game</title>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+	<link rel="icon" href="logo.png">
+	<link rel="stylesheet" href="style.css">
+	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"> </script>
+	<script src="webcam.js"></script>
+	<script src="rps-dataset.js"></script>
+	<script src="app.js"></script>
+</head>
+<body>
+
+	<div class="background">
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+	  </div>
+
+	  <div class="main">
+		  <div>
+			<div style="font-size: 50px;color: white;margin-bottom: 50px;margin-top: 20px;"><span style="background-color: var(--color4);padding: 20px; border-radius: 10px;">Snake Game <img src="logo.png" alt="" style="height: 70px;width: 70px;position: relative;top: 15px;"></span></div>
+
+
+			<div style="width: 100%;">
+				<div style="width: 234px; left: 0; right: 0; margin: auto;margin-bottom: 30px;">
+					<video autoplay playsinline muted id="wc" style="border: 5px solid var(--color4); border-radius: 30%;transform: scaleX(-1);-webkit-transform: scaleX(-1);height: 224px;width: 224px;background-color: var(--color3);"></video>
+				</div>
+			</div>
+			<div class="training-panel" style="margin-bottom: 30px;">
+				<button type="button" id="up-btn" class="btn">Up</button><br>
+				<button type="button" id="right-btn" class="btn">Right</button>
+				<button type="button" id="left-btn" class="btn">Left</button><br>
+				<button type="button" id="down-btn" class="btn">Down</button>				
+			</div> 
+
+
+			<div class="playground hide">
+
+				<div class="score" style="font-size: 30px;color: white;margin-bottom: 30px;">Score: <span>0</span></div>
+				<button class="start btn">Start / Restart</button>
+				<div id="prediction" style="font-size: 30px;color: white;margin-bottom: 30px;"></div>
+			</div>
+		  </div>
+		  <div style="display: flex;">
+
+
+			<div class="training-panel" style="width: 100%;align-items: center;text-align: center;margin: auto;margin-top: 70px;margin-bottom: 30px;">
+				<table style="margin:auto;background-color: var(--color4);font-size: 30px;color: #ffffff;padding: 20px;border: 7px solid var(--color1);border-radius: 5px;">
+					<tr style="margin: 30px;">
+						<td><div id="upsamples">Up Samples: 0</div></td>
+					</tr>
+					<tr style="margin: 30px;">
+						<td><div id="rightsamples">Right Samples: 0</div></td>
+					</tr>
+					<tr style="margin: 30px;">
+						<td><div id="leftsamples">Left Samples: 0</div></td>
+					</tr>
+					<tr style="margin: 30px;">
+						<td><div id="downsamples">Down Samples: 0</div></td>
+					</tr>
+					<tr style="margin: 30px;">
+						<td><button class="btn" type="button" id="train-btn">Train the model 🏋️‍♂️</button></td>
+					</tr>
+				</table>
+				
+				
+			</div>
+
+
+
+			<div class="playground hide" style="width: 100%;align-items: center;text-align: center;margin: auto;margin-top: 70px;margin-bottom: 30px;">
+				<div class="grid" style="margin: auto;">
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					
+				</div>
+			</div>
+			
+		  </div>
+		  <div class="footer">
+			Created by <a href="https://twitter.com/MarkSShenouda" style="color: #ffffff;">Mark S. Shenouda</a> 
+		</div>
+	  </div>
+	  
+	  
+	
+</body>
+</html>
